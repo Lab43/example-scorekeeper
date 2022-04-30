@@ -1,17 +1,15 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { setPlayerScore } from '../store/players';
 
 
 
-const AdjustScoreButton = ({ children, index, amount, title }) => {
+const AdjustScoreButton = ({ children, player, amount, title }) => {
 
   const dispatch = useDispatch();
 
-  const { score } = useSelector((state) => state.players[index]);
-
   const handleClick = () => {
-    dispatch(setPlayerScore(index, score + amount));
+    dispatch(setPlayerScore(player.index, player.score + amount));
   }
 
   return (

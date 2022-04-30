@@ -4,12 +4,12 @@ import { removePlayer } from '../store/players';
 
 
 
-const DeleteButton = ({ index }) => {
+const DeleteButton = ({ player }) => {
 
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    dispatch(removePlayer(index));
+    dispatch(removePlayer(player.index));
   }
 
   return (

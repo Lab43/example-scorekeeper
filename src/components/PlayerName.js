@@ -1,40 +1,42 @@
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { setPlayerName } from '../store/players';
 
 
 
-const PlayerName = ({ index }) => {
+const PlayerName = ({ player }) => {
 
   const dispatch = useDispatch();
 
-  const { name } = useSelector((state) => state.players[index]);
+  // We don't want to update the Redux store repeatedly as a player edits a name because that will trigger a bunch of extra API calls, so we use React's useState hook to store the name locally then only update the store when the user is done editing (when they click outside of the input field).
 
-  const [ editedName, setEditedName ] = useState(name);
+  const [ name, setName ] = useState(player.name);
 
-  // store the new name as it's being edited
   const handleChange =(e) => {
-    setEditedName(e.target.value);
+    setName(e.target.value);
   }
 
-  // When the user clicks out of the input field check if the name has been changed then update the redux store.
-  // By only updating the store when the user is done editing the name we avoid making extra API calls.
   const handleBlur = () => {
-    if (name !== editedName) {
-      dispatch(setPlayerName(index, editedName));
+    if (player.name !== name) {
+      dispatch(setPlayerName(player.index, name));
     }
   }
 
-  // The user will expect the changes to be applied when they hit enter. We can accomplish this by bluring focus on the input when the enter key is pressed.
+  // The user will also expect the changes to be applied when they hit enter. We can accomplish this by bluring focus on the input when the enter key is pressed.
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') e.target.blur();
   }
 
+  // We need to watch the player prop that's getting passed into the component for changes to the name.
+  useEffect(() => {
+    setName(player.name);
+  }, [player.name]);
+
   return (
     <input
-      value={editedName}
-      placeholder={`Player ${index + 1}`}
+      value={name}
+      placeholder={`Player ${player.index + 1}`}
       onChange={handleChange}
       onBlur={handleBlur}
       onKeyDown={handleKeyDown}

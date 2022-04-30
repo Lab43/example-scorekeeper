@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/example-scorekeeper/static/css/main.100b0040.css",
+    "main.js": "/example-scorekeeper/static/js/main.a6f1679c.js",
+    "static/media/by-43.svg": "/example-scorekeeper/static/media/by-43.a5998d603d252da49021b7f58c0a64c2.svg",
+    "index.html": "/example-scorekeeper/index.html",
+    "main.100b0040.css.map": "/example-scorekeeper/static/css/main.100b0040.css.map",
+    "main.a6f1679c.js.map": "/example-scorekeeper/static/js/main.a6f1679c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.100b0040.css",
+    "static/js/main.a6f1679c.js"
+  ]
+}

@@ -1,15 +1,17 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { setPlayerName } from '../store/players';
 
 
 
-const PlayerName = ({ player }) => {
+const PlayerName = ({ index }) => {
 
   const dispatch = useDispatch();
 
-  const [ editedName, setEditedName ] = useState(player.name);
+  const { name } = useSelector((state) => state.players[index]);
+
+  const [ editedName, setEditedName ] = useState(name);
 
   // store the new name as it's being edited
   const handleChange =(e) => {
@@ -19,8 +21,8 @@ const PlayerName = ({ player }) => {
   // When the user clicks out of the input field check if the name has been changed then update the redux store.
   // By only updating the store when the user is done editing the name we avoid making extra API calls.
   const handleBlur = () => {
-    if (player.name !== editedName) {
-      dispatch(setPlayerName(player.index, editedName));
+    if (name !== editedName) {
+      dispatch(setPlayerName(index, editedName));
     }
   }
 
@@ -32,7 +34,7 @@ const PlayerName = ({ player }) => {
   return (
     <input
       value={editedName}
-      placeholder={`Player ${player.index + 1}`}
+      placeholder={`Player ${index + 1}`}
       onChange={handleChange}
       onBlur={handleBlur}
       onKeyDown={handleKeyDown}

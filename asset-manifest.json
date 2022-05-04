@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/scorekeeper/static/css/main.100b0040.css",
-    "main.js": "/scorekeeper/static/js/main.03b78240.js",
+    "main.js": "/scorekeeper/static/js/main.08e371fa.js",
     "static/media/by-43.svg": "/scorekeeper/static/media/by-43.a5998d603d252da49021b7f58c0a64c2.svg",
     "index.html": "/scorekeeper/index.html",
     "main.100b0040.css.map": "/scorekeeper/static/css/main.100b0040.css.map",
-    "main.03b78240.js.map": "/scorekeeper/static/js/main.03b78240.js.map"
+    "main.08e371fa.js.map": "/scorekeeper/static/js/main.08e371fa.js.map"
   },
   "entrypoints": [
     "static/css/main.100b0040.css",
-    "static/js/main.03b78240.js"
+    "static/js/main.08e371fa.js"
   ]
 }
